@@ -5,7 +5,7 @@ opt.mouse = 'a'
 opt.fillchars = [[fold: ,vert:│,eob: ,msgsep:‾]]
 ---
 opt.nu = true
-opt.rnu = true
+opt.rnu = false
 opt.expandtab = true
 opt.tabstop = 4
 opt.softtabstop = 4

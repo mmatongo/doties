@@ -13,6 +13,7 @@ local abyss_dark_alt = base16.theme_from_array {
   "6f6f6f"; "e8e8e8"; "e8e8e8"; "fafafa";
   "078f9c"; "3ddbd9"; "079c5f"; "9f9f9f";
   "ff3299"; "079c5f"; "078f9c"; "3ddbd9";
+  -- test comment
 }
 
 local ibm_dark = base16.theme_from_array {
@@ -29,9 +30,7 @@ local coda_dark = base16.theme_from_array {
   "2f4858"; "15596c"; "00966f"; "008d71";
 }
 
-base16(coda_dark, true)
-
-
+base16(abyss_dark_alt, true)
 
 -- higlights
 vim.cmd [[

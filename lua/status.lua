@@ -54,7 +54,7 @@ Statusline.active = function()
     "%=", -- right align
     " %Y ", -- file type
     color(), -- mode colors
-    " %l:%c " -- line, column 
+    " %l:%c " -- line, column
   }
 end
 
@@ -66,13 +66,15 @@ function Statusline.short()
   return "%#Normal#"
 end
 
--- Execute statusline
 vim.cmd([[
   augroup Statusline
-  au!
-    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-    au WinEnter,BufEnter,FileType NvimTree,terminal setlocal statusline=%!v:lua.Statusline.short()
-    au WinLeave,BufLeave,FileType NvimTree,terminal setlocal statusline=%!v:lua.Statusline.short()
+    au!
+    " Set the status line for the active window
+    au WinEnter,BufEnter * if &ft != 'NvimTree' && &ft != 'terminal' | setlocal statusline=%!v:lua.Statusline.active() | endif
+    " Set the inactive status line for other windows
+    au WinLeave,BufLeave * if &ft != 'NvimTree' && &ft != 'terminal' | setlocal statusline=%!v:lua.Statusline.inactive() | endif
+    " Set a short status line for NvimTree and terminal
+    au FileType NvimTree,terminal setlocal statusline=%!v:lua.Statusline.short()
   augroup END
-]], false)
+]])
+
