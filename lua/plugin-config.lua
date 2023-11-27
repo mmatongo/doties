@@ -47,7 +47,7 @@ return require("packer").startup(function()
     use 'hrsh7th/nvim-cmp'
     use 'akinsho/toggleterm.nvim'
     use 'liuchengxu/vista.vim'
-    use 'nvimdev/dashboard-nvim'
+    use 'willothy/veil.nvim'
     use 'dense-analysis/ale'
     use 'williamboman/mason.nvim'
     use {
