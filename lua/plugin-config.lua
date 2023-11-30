@@ -41,7 +41,7 @@ return require("packer").startup(function()
 	use 'norcalli/nvim-base16.lua'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
-	  use 'lewis6991/gitsigns.nvim'
+	use 'lewis6991/gitsigns.nvim'
     use 'norcalli/nvim-colorizer.lua'
     use 'folke/which-key.nvim'
     use 'hrsh7th/nvim-cmp'
@@ -50,6 +50,12 @@ return require("packer").startup(function()
     use 'willothy/veil.nvim'
     use 'dense-analysis/ale'
     use 'williamboman/mason.nvim'
+    use 'github/copilot.vim'
+    use 'gen740/SmoothCursor.nvim'
+    use 'max397574/better-escape.nvim'
+    use 'FeiyouG/commander.nvim'
+    use 'cshuaimin/ssr.nvim'
+    use 'sidebar-nvim/sidebar.nvim'
     use {
       'kyazdani42/nvim-tree.lua',
       requires = {

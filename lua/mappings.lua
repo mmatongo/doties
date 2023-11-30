@@ -16,6 +16,7 @@ vkm( 'n',   '<C-n>', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 vkm( 'n',   '<TAB>', ':tabnext<CR>', {noremap = true, silent = true})
 vkm( 'n',   '<C-k>', ':ALEFix<CR>', {noremap = true, silent = true})
 vkm( 'n',   '<C-v>', ':Vista!!<CR>', {noremap = true, silent = true})
+
 -- which-key
 vkm( 'n',   '<leader>', ':WhichKey<CR>', {noremap = true, silent = true})
 
@@ -27,6 +28,9 @@ vkm( 'n',   '<C-p>', ':Telescope git_files<CR>', {noremap = true, silent = true}
 vkm( 'n',   '<C-t>', ':Telescope treesitter<CR>', {noremap = true, silent = true})
 vkm( 'n',   '<C-b>', ':Telescope buffers<CR>', {noremap = true, silent = true})
 vkm( 'n',   '<C-c>', ':Telescope commands<CR>', {noremap = true, silent = true})
+
+-- mason
+vkm( 'n',   '<C-[>', ':Mason<CR>', {noremap = true, silent = true})
 
 function minimal()
   if active then

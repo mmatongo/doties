@@ -21,7 +21,7 @@ require('nvim-tree').setup {
         },
       },
     },
-    root_folder_modifier = ":t",  -- Add this line
+    root_folder_modifier = ":t",
   },
   diagnostics = {
     enable = true,
@@ -37,7 +37,10 @@ require('nvim-tree').setup {
   },
   filters = {
     dotfiles = true,
-  }
+  },
+  view = {
+    width = 40,
+  },
 }
 
 -- Setup nvim-web-devicons

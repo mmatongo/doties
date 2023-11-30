@@ -70,11 +70,11 @@ vim.cmd([[
   augroup Statusline
     au!
     " Set the status line for the active window
-    au WinEnter,BufEnter * if &ft != 'NvimTree' && &ft != 'terminal' | setlocal statusline=%!v:lua.Statusline.active() | endif
+    au WinEnter,BufEnter * if &ft != 'NvimTree' && &ft != 'SidebarNvim' && &ft != 'Veil' && &ft != 'terminal' | setlocal statusline=%!v:lua.Statusline.active() | endif
     " Set the inactive status line for other windows
-    au WinLeave,BufLeave * if &ft != 'NvimTree' && &ft != 'terminal' | setlocal statusline=%!v:lua.Statusline.inactive() | endif
+    au WinLeave,BufLeave * if &ft != 'NvimTree' && &ft != 'SidebarNvim' && &ft != 'Veil' && &ft != 'terminal' | setlocal statusline=%!v:lua.Statusline.inactive() | endif
     " Set a short status line for NvimTree and terminal
-    au FileType NvimTree,terminal setlocal statusline=%!v:lua.Statusline.short()
+    au FileType NvimTree,SidebarNvim,Veil,terminal setlocal statusline=%!v:lua.Statusline.short()
   augroup END
 ]])
 
