@@ -9,6 +9,7 @@ g.mapleader = ","
 
 -- keymaps
 vkm("n", "<C-s>", ":write<CR>", { noremap = true, silent = true })
+vkm("n", "<C-q>", ":q!<CR>", { noremap = true, silent = true })
 vkm("n", "<C-x>", ":quit<CR>", { noremap = true, silent = true })
 vkm("n", "<C-e>", ":lua minimal()<CR>", { noremap = true, silent = true })
 vkm("n", "<C-a>", ":tabnew<CR>", { noremap = true, silent = true })
@@ -28,6 +29,13 @@ vkm("n", "<C-p>", ":Telescope git_files<CR>", { noremap = true, silent = true })
 vkm("n", "<C-t>", ":Telescope treesitter<CR>", { noremap = true, silent = true })
 vkm("n", "<C-b>", ":Telescope buffers<CR>", { noremap = true, silent = true })
 vkm("n", "<C-c>", ":Telescope commands<CR>", { noremap = true, silent = true })
+vkm("n", "<C-u>", ":Telescope undo<CR>", { noremap = true, silent = true })
+
+-- treesitter
+--vkm("n", "<C-=", ":TSBufEnable highlight<CR>", { noremap = true, silent = true })
+
+-- other.nvim
+vkm("n", "<C-j>", ":OtherVSplit<CR>", { noremap = true, silent = true })
 
 -- mason
 vkm("n", "<C-[>", ":Mason<CR>", { noremap = true, silent = true })
@@ -35,10 +43,8 @@ vkm("n", "<C-[>", ":Mason<CR>", { noremap = true, silent = true })
 -- sidebar
 vkm("n", "<C-m>", ":SidebarNvimToggle<CR>", { noremap = true, silent = true })
 
--- ssr
-vim.keymap.set({ "n", "x" }, "<C-;>", function()
-	require("ssr").open()
-end)
+-- clear enter mapping
+vkm("n", "<CR>", "<NOP>", { noremap = true, silent = true })
 
 function minimal()
 	if active then

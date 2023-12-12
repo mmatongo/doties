@@ -7,13 +7,7 @@ if not present then
 end
 
 colorizer.setup({
-	"css",
-	"javascript",
-	"typescript",
-	"lua",
-	"html",
-	"rust",
-	"ruby",
+	"*",
 	html = {
 		mode = "foreground",
 	},

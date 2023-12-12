@@ -99,7 +99,3 @@ opt.updatetime = 300
 opt.timeout = true
 opt.timeoutlen = 500
 opt.ttimeoutlen = 10
-
--- misc
-vc([[hi NormalFloat guibg=#222222]])
-vc([[hi FloatBorder guifg=#565c64 guibg=none]])

@@ -5,8 +5,8 @@ local vfs = vim.fn.sign_define
 local g = vim.g
 
 -- Custom signs and colors
-vfs("DiagnosticSignError", { text = "┃", texthl = "ALEErrorSign" })
-vfs("DiagnosticSignWarn", { text = "┃", texthl = "ALEWarningSign" })
+vfs("DiagnosticSignError", { text = "┣", texthl = "ALEErrorSign" })
+vfs("DiagnosticSignWarn", { text = "┣", texthl = "ALEWarningSign" })
 
 vc([[
     highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#f47174 guibg=#101010

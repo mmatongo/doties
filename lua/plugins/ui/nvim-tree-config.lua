@@ -37,6 +37,11 @@ nvimtree.setup({
 			error = "•",
 		},
 	},
+	update_focused_file = {
+		enable = true,
+		update_root = false,
+		ignore_list = { "help" },
+	},
 	git = {
 		enable = true, -- Enables git integration
 	},
@@ -52,7 +57,7 @@ nvimtree.setup({
 local function set_default_highlights()
 	vc("highlight NvimTreeNormal guibg=none guifg=#b0b0b0")
 	vc("highlight NvimTreeFolderName guifg=#c5c8c6")
-	vc("highlight NvimTreeRootFolder guifg=#404040 gui=bold")
+	vc("highlight NvimTreeRootFolder guifg=#e0e0e0" .. " gui=bold")
 	vc("highlight NvimTreeExecFile guifg=#d7ebba")
 	vc("highlight NvimTreeSpecialFile guifg=#d7ebba")
 	vc("highlight NvimTreeFolderIcon guifg=#f47174")
@@ -65,38 +70,4 @@ local function set_default_highlights()
 	vc("highlight NvimTreeSpecialFile guifg=#c5c8c6")
 end
 
--- Function to get Git status
-local function get_git_status()
-	local status = vim.fn.systemlist("git status --porcelain=v1")
-	local changes = {}
-	for _, line in ipairs(status) do
-		if line:match("^ M") or line:match("^ A") or line:match("^ D") or line:match("^ R") or line:match("^ ??") then
-			-- Extract the file path from the Git status output
-			local file = line:sub(4)
-			-- Store the file in the changes table
-			table.insert(changes, file)
-		end
-	end
-	return changes
-end
-
--- Call the function to set the default highlights
 set_default_highlights()
-
--- Function to update NvimTree colors based on Git status
--- This doesn't work for some reason (then again, I'm not a Lua expert)
--- TODO: Fix this
-local function update_nvim_tree_colors()
-	local changes = get_git_status()
-	if next(changes) == nil then
-		-- No changes, set to default color
-		vc("highlight NvimTreeFolderName guifg=#c5c8c6")
-	else
-		-- Changes detected, set to changed color
-		vc("highlight NvimTreeFolderName guifg=#ff9800")
-	end
-end
-
--- Autocommands
-vc("autocmd BufEnter NvimTree lua update_nvim_tree_colors()")
-vc("autocmd Colorscheme * lua set_default_highlights()")

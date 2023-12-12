@@ -31,10 +31,16 @@ telescope.setup({
 		border = {},
 		-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+		extensions = {
+			undo = {
+				use_delta = true,
+				use_custom_command = nil, -- setting this implies `use_delta = false`. Accepted format is: { "bash", "-c", "echo '$DIFF' | delta" }
+				side_by_side = false,
+				diff_context_lines = vim.o.scrolloff,
+				entry_format = "state #$ID, $STAT, $TIME",
+				time_format = "",
+				saved_only = false,
+			},
+		},
 	},
 })
-
---vks("n", "<leader>ff", builtin.find_files, {})
---vks("n", "<leader>fg", builtin.live_grep, {})
---vks("n", "<leader>fb", builtin.buffers, {})
---vks("n", "<leader>fh", builtin.help_tags, {})

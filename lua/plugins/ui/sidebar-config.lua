@@ -8,13 +8,13 @@ if not present then
 end
 
 sidebar.setup({
-	disable_default_keybindings = 0,
+	disable_default_keybindings = 1,
 	bindings = nil,
 	open = false,
 	side = "right",
 	initial_width = 35,
 	hide_statusline = false,
-	update_interval = 1000,
+	update_interval = 100,
 	sections = { "git", "symbols", "files" },
 	-- section_separator = { "", "-----", "" },
 	section_title_separator = { "" },
