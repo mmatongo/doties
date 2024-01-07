@@ -58,6 +58,8 @@ return require("packer").startup(function()
 	use("stevearc/dressing.nvim")
 	use("simrat39/symbols-outline.nvim")
 	use("m-demare/hlargs.nvim")
+	use("mrjones2014/legendary.nvim")
+	use({ "Jxstxs/conceal.nvim" })
 	use({
 		"projekt0n/circles.nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
@@ -86,6 +88,12 @@ return require("packer").startup(function()
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
+		end,
+	})
+	use({
+		"Wansmer/symbol-usage.nvim",
+		config = function()
+			require("symbol-usage").setup()
 		end,
 	})
 	use({
