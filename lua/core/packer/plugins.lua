@@ -31,7 +31,7 @@ packer.init({
 	},
 })
 
-vim.cmd("packadd packer.nvim")
+-- vim.cmd("packadd packer.nvim")
 
 return require("packer").startup(function()
 	use({
@@ -39,20 +39,15 @@ return require("packer").startup(function()
 		opt = true,
 	})
 	use("norcalli/nvim-base16.lua")
+	use("nvim-tree/nvim-tree.lua")
 	use("nvim-lua/plenary.nvim")
 	use("lewis6991/gitsigns.nvim")
 	use("norcalli/nvim-colorizer.lua")
-	use("folke/which-key.nvim")
 	use("akinsho/toggleterm.nvim")
-	use("liuchengxu/vista.vim")
-	use("willothy/veil.nvim")
 	use("dense-analysis/ale")
 	use("williamboman/mason.nvim")
-	use("github/copilot.vim")
 	use("max397574/better-escape.nvim")
-	use("sidebar-nvim/sidebar.nvim")
 	use("windwp/nvim-autopairs")
-	use("kyazdani42/nvim-tree.lua")
 	use("andersevenrud/nvim_context_vt")
 	use("rgroli/other.nvim")
 	use("stevearc/dressing.nvim")
@@ -60,6 +55,13 @@ return require("packer").startup(function()
 	use("m-demare/hlargs.nvim")
 	use("mrjones2014/legendary.nvim")
 	use({ "Jxstxs/conceal.nvim" })
+	use("ray-x/guihua.lua")
+	use({
+		"ray-x/go.nvim",
+		config = function()
+			require("go").setup()
+		end,
+	})
 	use({
 		"projekt0n/circles.nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },
@@ -71,6 +73,9 @@ return require("packer").startup(function()
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			"debugloop/telescope-undo.nvim",
+			"nvim-lua/popup.nvim",
+			"nvim-telescope/telescope-file-browser.nvim",
+			"nvim-telescope/telescope-packer.nvim",
 		},
 	})
 	use({
@@ -78,7 +83,9 @@ return require("packer").startup(function()
 		requires = {
 			"rafamadriz/friendly-snippets",
 			"saadparwaiz1/cmp_luasnip",
+			"neovim/nvim-lspconfig",
 		},
+		run = "make install_jsregexp",
 	})
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -91,12 +98,6 @@ return require("packer").startup(function()
 		end,
 	})
 	use({
-		"Wansmer/symbol-usage.nvim",
-		config = function()
-			require("symbol-usage").setup()
-		end,
-	})
-	use({
 		"mmatongo/vim-colors-plain",
 		branch = "duotone",
 	})
@@ -105,7 +106,14 @@ return require("packer").startup(function()
 		requires = {
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
 		},
+	})
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
 	})
 
 	if packer_bootstrap then

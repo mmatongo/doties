@@ -5,8 +5,8 @@ local vfs = vim.fn.sign_define
 local g = vim.g
 
 -- Custom signs and colors
-vfs("DiagnosticSignError", { text = "┣", texthl = "ALEErrorSign" })
-vfs("DiagnosticSignWarn", { text = "┣", texthl = "ALEWarningSign" })
+vfs("DiagnosticSignError", { text = "│", texthl = "ALEErrorSign" })
+vfs("DiagnosticSignWarn", { text = "│", texthl = "ALEWarningSign" })
 
 vc([[
     highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#f47174 guibg=#101010
@@ -28,12 +28,14 @@ g.ale_linters = {
 	-- Add other file types and their linters as needed
 	python = { "flake8", "mypy", "pylint" },
 	lua = { "stylua" },
+	go = { "gofmt", "goimports" },
 }
 g.ale_fixers = {
 	ruby = { "rubocop" },
 	javascript = { "prettier" }, -- Add your preferred fixer for JS
 	html = { "tidy" }, -- Add your preferred fixer for HTML
 	lua = { "stylua" },
+	go = { "gofmt", "goimports" },
 }
 
 -- Enable ALE fixers

@@ -23,6 +23,7 @@ ts_config.setup({
 		enable = true,
 	},
 	ensure_installed = "ruby",
+	ensure_installed = "go",
 	auto_install = true,
 	ignore_install = { "javascript" },
 })

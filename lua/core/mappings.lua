@@ -1,4 +1,3 @@
--- opts
 local g = vim.g
 local vkm = vim.api.nvim_set_keymap
 local fn = vim.fn
@@ -24,6 +23,7 @@ vkm("n", "<C-]>", ":WhichKey<CR>", { noremap = true, silent = true })
 -- telescope
 vkm("n", "<C-f>", ":Telescope find_files<CR>", { noremap = true, silent = true })
 vkm("n", "<C-g>", ":Telescope live_grep<CR>", { noremap = true, silent = true })
+vkm("n", "<C-w>", ":Telescope file_browser<CR>", { noremap = true, silent = true })
 vkm("n", "<C-h>", ":Telescope help_tags<CR>", { noremap = true, silent = true })
 vkm("n", "<C-p>", ":Telescope git_files<CR>", { noremap = true, silent = true })
 vkm("n", "<C-t>", ":Telescope treesitter<CR>", { noremap = true, silent = true })
@@ -35,16 +35,33 @@ vkm("n", "<C-u>", ":Telescope undo<CR>", { noremap = true, silent = true })
 --vkm("n", "<C-=", ":TSBufEnable highlight<CR>", { noremap = true, silent = true })
 
 -- other.nvim
-vkm("n", "<C-j>", ":OtherVSplit<CR>", { noremap = true, silent = true })
+--vkm("n", "<C-j>", ":OtherVSplit<CR>", { noremap = true, silent = true })
 
 -- mason
 vkm("n", "<C-[>", ":Mason<CR>", { noremap = true, silent = true })
 
 -- sidebar
-vkm("n", "<C-m>", ":SidebarNvimToggle<CR>", { noremap = true, silent = true })
 
 -- clear enter mapping
 vkm("n", "<CR>", "<NOP>", { noremap = true, silent = true })
+vkm("n", "<ESC>", "<NOP", { noremap = true, silent = true })
+
+-- vim.lsp
+--vkm("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+--vkm("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+--vkm("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+--vkm("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
+--vkm("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+--vkm("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
+--vkm(
+--	"n",
+--	"<leader>wl",
+--	"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+--	{ noremap = true, silent = true }
+--)
+-- lua vim.lsp.buf.code_action()
+--vkm("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+--vkm("n", "<C-l>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 
 function minimal()
 	if active then
