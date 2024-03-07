@@ -31,7 +31,7 @@ g.ale_linters = {
 	go = { "gofmt", "goimports" },
 }
 g.ale_fixers = {
-	ruby = { "rubocop" },
+	--ruby = { "rubocop" },
 	javascript = { "prettier" }, -- Add your preferred fixer for JS
 	html = { "tidy" }, -- Add your preferred fixer for HTML
 	lua = { "stylua" },
