@@ -1,6 +1,7 @@
 -- cmp config
 
 local present, cmp = pcall(require, "cmp")
+local lspkind = require("lspkind")
 
 if not present then
 	return
@@ -33,13 +34,17 @@ cmp.setup({
 		end,
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "gopls" },
-		{ name = "golangci_lint_ls" },
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' }, -- For luasnip users.
 	}, {
-		{ name = "buffer" },
+		{ name = 'buffer' },
 	}),
+	formatting = {
+	    format = lspkind.cmp_format({
+			mode = 'symbol', -- Show only symbol annotations
+			maxwidth = 50,   -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+		})
+	}
 })
 
 -- Set configuration for specific filetype.
