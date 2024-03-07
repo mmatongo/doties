@@ -99,3 +99,24 @@ opt.updatetime = 300
 opt.timeout = true
 opt.timeoutlen = 500
 opt.ttimeoutlen = 10
+
+-- neovide
+if g.neovide then
+	g.neovide_padding_top = 15
+	g.neovide_cursor_vfx_mode = ""
+	g.neovide_remember_window_size = true
+
+	-- disable neovide for certain filetypes
+	vc(
+		[[
+		au FileType NvimTree,pack lua vim.g.neovide_remember_window_size = false
+		]],
+		false
+	)
+end
+
+-- nvim notify
+notify, _ = pcall(require, "notify")
+if notify then
+	vim.notify = require("notify")
+end
