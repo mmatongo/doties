@@ -26,7 +26,9 @@ end
 packer.init({
 	display = {
 		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
+			return require("packer.util").float({
+				border = "rounded",
+			})
 		end,
 	},
 })
@@ -38,11 +40,9 @@ return require("packer").startup(function()
 		"wbthomason/packer.nvim",
 		opt = true,
 	})
-	use("norcalli/nvim-base16.lua")
 	use("nvim-tree/nvim-tree.lua")
 	use("nvim-lua/plenary.nvim")
 	use("lewis6991/gitsigns.nvim")
-	use("norcalli/nvim-colorizer.lua")
 	use("akinsho/toggleterm.nvim")
 	use("dense-analysis/ale")
 	use("williamboman/mason.nvim")
@@ -51,15 +51,26 @@ return require("packer").startup(function()
 	use("andersevenrud/nvim_context_vt")
 	use("rgroli/other.nvim")
 	use("stevearc/dressing.nvim")
-	use("simrat39/symbols-outline.nvim")
 	use("m-demare/hlargs.nvim")
 	use("mrjones2014/legendary.nvim")
-	use({ "Jxstxs/conceal.nvim" })
-	use("ray-x/guihua.lua")
+	use("Jxstxs/conceal.nvim")
+	use("nvim-lualine/lualine.nvim")
+	use("rcarriga/nvim-notify")
+	use({
+		"crusj/structrue-go.nvim",
+		branch = "main",
+	})
 	use({
 		"ray-x/go.nvim",
+		requires = { "ray-x/guihua.lua" },
 		config = function()
 			require("go").setup()
+		end,
+	})
+	use({
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").setup()
 		end,
 	})
 	use({
