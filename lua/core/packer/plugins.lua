@@ -56,6 +56,7 @@ return require("packer").startup(function()
 	use("Jxstxs/conceal.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("rcarriga/nvim-notify")
+	use("romgrk/barbar.nvim")
 	use({
 		"crusj/structrue-go.nvim",
 		branch = "main",
