@@ -33,8 +33,6 @@ packer.init({
 	},
 })
 
--- vim.cmd("packadd packer.nvim")
-
 return require("packer").startup(function()
 	use({
 		"wbthomason/packer.nvim",
@@ -48,15 +46,16 @@ return require("packer").startup(function()
 	use("williamboman/mason.nvim")
 	use("max397574/better-escape.nvim")
 	use("windwp/nvim-autopairs")
-	use("andersevenrud/nvim_context_vt")
+	-- use("andersevenrud/nvim_context_vt")
 	use("rgroli/other.nvim")
 	use("stevearc/dressing.nvim")
 	use("m-demare/hlargs.nvim")
 	use("mrjones2014/legendary.nvim")
-	use("Jxstxs/conceal.nvim")
+	-- use("Jxstxs/conceal.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("rcarriga/nvim-notify")
 	use("romgrk/barbar.nvim")
+	use("dgagn/diagflow.nvim")
 	use({
 		"crusj/structrue-go.nvim",
 		branch = "main",

@@ -6,16 +6,6 @@ end
 
 -- should be run before .generate_conceals to use user Configuration
 conceal.setup({
-	--[[ ["language"] = {
-        enabled = bool,
-        keywords = {
-          ["keyword"] = {
-              enabled     = bool,
-              conceal     = string,
-              highlight   = string
-          }
-        }
-    } ]]
 	["lua"] = {
 		enabled = true,
 		keywords = {
