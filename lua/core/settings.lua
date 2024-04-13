@@ -120,3 +120,6 @@ notify, _ = pcall(require, "notify")
 if notify then
 	vim.notify = require("notify")
 end
+
+-- misc
+g.barbar_auto_setup = false

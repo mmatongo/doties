@@ -46,16 +46,16 @@ return require("packer").startup(function()
 	use("williamboman/mason.nvim")
 	use("max397574/better-escape.nvim")
 	use("windwp/nvim-autopairs")
-	-- use("andersevenrud/nvim_context_vt")
 	use("rgroli/other.nvim")
 	use("stevearc/dressing.nvim")
 	use("m-demare/hlargs.nvim")
 	use("mrjones2014/legendary.nvim")
-	-- use("Jxstxs/conceal.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("rcarriga/nvim-notify")
 	use("romgrk/barbar.nvim")
-	use("dgagn/diagflow.nvim")
+	use("glepnir/lspsaga.nvim")
+	-- use("ray-x/lsp_signature.nvim")
+	use("goolord/alpha-nvim")
 	use({
 		"crusj/structrue-go.nvim",
 		branch = "main",
@@ -65,12 +65,6 @@ return require("packer").startup(function()
 		requires = { "ray-x/guihua.lua" },
 		config = function()
 			require("go").setup()
-		end,
-	})
-	use({
-		"ray-x/lsp_signature.nvim",
-		config = function()
-			require("lsp_signature").setup()
 		end,
 	})
 	use({
@@ -121,10 +115,6 @@ return require("packer").startup(function()
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 		},
-	})
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
 	})
 
 	if packer_bootstrap then

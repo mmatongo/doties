@@ -41,9 +41,20 @@ cmp.setup({
 	}),
 	formatting = {
 	    format = lspkind.cmp_format({
-			mode = 'symbol', -- Show only symbol annotations
-			maxwidth = 50,   -- Prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			mode = 'symbol',
+			maxwidth = 50,
 		})
+		-- format = function(entry, vim_item)
+		-- 	vim_item.kind = lspkind.presets.default[vim_item.kind]
+
+		-- 	vim_item.menu = ({
+		-- 		nvim_lsp = "[LSP]",
+		-- 		luasnip = "[LuaSnip]",
+		-- 		buffer = "[Buffer]",
+		-- 	})[entry.source.name]
+
+		-- 	return vim_item
+		-- end
 	}
 })
 
@@ -65,11 +76,11 @@ cmp.setup.cmdline({ "/", "?" }, {
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-})
+-- cmp.setup.cmdline(":", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sources = cmp.config.sources({
+-- 		{ name = "path" },
+-- 	}, {
+-- 		{ name = "cmdline" },
+-- 	}),
+-- })

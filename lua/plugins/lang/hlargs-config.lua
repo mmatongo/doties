@@ -26,7 +26,8 @@ hlargs.setup({
     usages = {
       python = { 'self', 'cls' },
       lua = { 'self' },
-      ruby = { 'self' }
+      ruby = { 'self' },
+      go = { 'self' },
     }
   },
   performance = {

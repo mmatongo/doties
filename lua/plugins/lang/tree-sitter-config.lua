@@ -22,8 +22,21 @@ ts_config.setup({
 	indent = {
 		enable = true,
 	},
-	ensure_installed = "ruby",
-	ensure_installed = "go",
+	ensure_installed = {
+		"bash",
+		"css",
+		"go",
+		"html",
+		"json",
+		"lua",
+		"python",
+		"ruby",
+		"rust",
+		"toml",
+		"yaml",
+		"gotmpl",
+	},
+	sync_install = false,
 	auto_install = true,
 	ignore_install = { "javascript" },
 })
