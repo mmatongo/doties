@@ -1,9 +1,15 @@
 -- luasnip config
 
-local present, luasnip_loaders = pcall(require, "luasnip.loaders.from_vscode")
+require("luasnip.loaders.from_vscode").lazy_load({ exclude = vim.g.vscode_snippets_exclude or {} })
+require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.g.vscode_snippets_path or "" })
 
-if not present then
-	return
-end
-
-luasnip_loaders.load()
+vim.api.nvim_create_autocmd("InsertLeave", {
+	callback = function()
+		if
+			require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+			and not require("luasnip").session.jump_active
+		then
+			require("luasnip").unlink_current()
+		end
+	end,
+})
