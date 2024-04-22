@@ -1,54 +1,58 @@
 -- telescope config
 
-local vks = vim.keymap.set
-local builtin = require("telescope.builtin")
-local present, telescope = pcall(require, "telescope")
-local fb_actions = require("telescope._extensions.file_browser.actions")
-
-if not present then
-	return
-end
-
-telescope.setup({
+local options = {
 	defaults = {
-		file_ignore_patterns = {
-			"%.jpg",
-			"%.jpeg",
-			"%.png",
-			"%.otf",
-			"%.ttf",
-			"node_modules",
-			".git",
+		vimgrep_arguments = {
+			"rg",
+			"-L",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
 		},
 		prompt_prefix = " ❯ ",
 		selection_caret = "  ",
 		entry_prefix = "  ",
-		layout_strategy = "flex",
+		initial_mode = "insert",
+		selection_strategy = "reset",
+		sorting_strategy = "ascending",
+		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				preview_width = 0.6,
+				prompt_position = "top",
+				preview_width = 0.55,
+				results_width = 0.8,
 			},
+			vertical = {
+				mirror = false,
+			},
+			width = 0.87,
+			height = 0.80,
+			preview_cutoff = 120,
 		},
+		file_ignore_patterns = { "node_modules" },
+		path_display = { "truncate" },
+		winblend = 3,
 		border = {},
-		-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-		extensions = {
-			undo = {
-				use_delta = true,
-				use_custom_command = nil, -- setting this implies `use_delta = false`. Accepted format is: { "bash", "-c", "echo '$DIFF' | delta" }
-				side_by_side = false,
-				diff_context_lines = vim.o.scrolloff,
-				entry_format = "state #$ID, $STAT, $TIME",
-				time_format = "",
-				saved_only = false,
-			},
+		color_devicons = true,
+		set_env = {
+			["COLORTERM"] = "truecolor",
 		},
 	},
 	extensions = {
-		file_browser = {
-			hidden = true,
-			show_hidden = true,
-			file_ignore_patterns = { "%.jpg", "%.jpeg", "%.png", "%.otf", "%.ttf", "node_modules", ".git" },
+		undo = {
+			use_delta = true,
+			use_custom_command = nil, -- setting this implies `use_delta = false`. Accepted format is: { "bash", "-c", "echo '$DIFF' | delta" }
+			side_by_side = false,
+			diff_context_lines = vim.o.scrolloff,
+			entry_format = "state #$ID, $STAT, $TIME",
+			time_format = "",
+			saved_only = false,
 		},
 	},
-})
+}
+
+return options
