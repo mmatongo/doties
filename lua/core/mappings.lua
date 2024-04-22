@@ -1,5 +1,5 @@
 local g = vim.g
-local vkm = vim.api.nvim_set_keymap
+local vks = vim.keymap.set
 local fn = vim.fn
 local vc = vim.cmd
 
@@ -9,48 +9,53 @@ g.mapleader = ","
 -- keymaps
 opts = { noremap = true, silent = true }
 
-vkm("n", "<C-s>", ":write<CR>", opts)
-vkm("n", "<C-q>", ":q!<CR>", opts)
-vkm("n", "<C-x>", ":quit<CR>", opts)
-vkm("n", "<C-e>", ":lua minimal()<CR>", opts)
-vkm("n", "<C-a>", ":tabnew<CR>", opts)
-vkm("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
-vkm("n", "<TAB>", ":tabnext<CR>", opts)
-vkm("n", "<C-k>", ":ALEFix<CR>", opts)
-vkm("n", "<C-v>", ":Lengendary.find<CR>", opts)
+vks("n", "<C-s>", ":write<CR>", opts)
+vks("n", "<C-q>", ":q!<CR>", opts)
+vks("n", "<C-x>", ":quit<CR>", opts)
+vks("n", "<C-e>", ":lua minimal()<CR>", opts)
+vks("n", "<C-a>", ":tabnew<CR>", opts)
+vks("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
+vks("n", "<TAB>", ":tabnext<CR>", opts)
+vks("n", "<C-k>", ":ALEFix<CR>", opts)
+vks("n", "<C-v>", ":Lengendary.find<CR>", opts)
 
 -- telescope
-vkm("n", "<C-f>", ":Telescope find_files<CR>", opts)
-vkm("n", "<C-g>", ":Telescope live_grep<CR>", opts)
-vkm("n", "<C-w>", ":Telescope file_browser<CR>", opts)
-vkm("n", "<C-h>", ":Telescope help_tags<CR>", opts)
-vkm("n", "<C-p>", ":Telescope git_files<CR>", opts)
-vkm("n", "<C-t>", ":Telescope treesitter<CR>", opts)
-vkm("n", "<C-b>", ":Telescope buffers<CR>", opts)
-vkm("n", "<C-c>", ":Telescope commands<CR>", opts)
-vkm("n", "<C-u>", ":Telescope undo<CR>", opts)
+vks("n", "<C-f>", ":Telescope find_files<CR>", opts)
+vks("n", "<C-g>", ":Telescope live_grep<CR>", opts)
+vks("n", "<C-w>", ":Telescope file_browser<CR>", opts)
+vks("n", "<C-h>", ":Telescope help_tags<CR>", opts)
+vks("n", "<C-p>", ":Telescope git_files<CR>", opts)
+vks("n", "<C-t>", ":Telescope treesitter<CR>", opts)
+vks("n", "<C-b>", ":Telescope buffers<CR>", opts)
+vks("n", "<C-c>", ":Telescope commands<CR>", opts)
+vks("n", "<C-u>", ":Telescope undo<CR>", opts)
 
 -- other.nvim
-vkm("n", "<C-j>", ":OtherVSplit<CR>", opts)
+vks("n", "<C-j>", ":OtherVSplit<CR>", opts)
 
 -- mason
-vkm("n", "<C-[>", ":Mason<CR>", opts)
+vks("n", "<C-[>", ":Mason<CR>", opts)
 
 -- lspsaga
-vkm("n", "gh", ":Lspsaga lsp_finder<CR>", opts)
-vkm("n", "gg", ":Lspsaga code_action<CR>", opts)
-vkm("n", "gj", ":Lspsaga hover_doc<CR>", opts)
-vkm("n", "gk", ":Lspsaga signature_help<CR>", opts)
-vkm("n", "gl", ":Lspsaga show_line_diagnostics<CR>", opts)
-vkm("n", "gq", ":Lspsaga rename<CR>", opts)
-vkm("n", "gR", ":Lspsaga preview_definition<CR>", opts)
+vks("n", "gh", ":Lspsaga lsp_finder<CR>", opts)
+vks("n", "gg", ":Lspsaga code_action<CR>", opts)
+vks("n", "gj", ":Lspsaga hover_doc<CR>", opts)
+vks("n", "gk", ":Lspsaga signature_help<CR>", opts)
+vks("n", "gl", ":Lspsaga show_line_diagnostics<CR>", opts)
+vks("n", "gq", ":Lspsaga rename<CR>", opts)
+vks("n", "gR", ":Lspsaga preview_definition<CR>", opts)
 
 -- clear enter mapping
-vkm("n", "<CR>", "<NOP>", opts)
-vkm("n", "<ESC>", "<NOP", opts)
+vks("n", "<CR>", "<NOP>", opts)
+vks("n", "<ESC>", "<NOP", opts)
 
 -- toggleterm
-vkm("n", "<C-l>", ":ToggleTerm<CR>", opts)
+vks("n", "<C-l>", ":ToggleTerm<CR>", opts)
+
+-- searchbox
+vks("n", "<leader>s", ":SearchBoxMatchAll<CR>", opts)
+vks("n", "<leader>S", ":SearchBoxReplace<CR>", opts)
+
 
 function minimal()
 	if active then
@@ -71,8 +76,8 @@ end
 -- check if neovide is running
 if g.neovide then
 	g.neovide_input_use_logo = 1
-	vkm('', '<D-v>', '+p<CR>', opts)
-	vkm('!', '<D-v>', '<C-R>+', opts)
-	vkm('t', '<D-v>', '<C-R>+', opts)
-	vkm('v', '<D-v>', '<C-R>+', opts)
+	vks("", "<D-v>", "+p<CR>", opts)
+	vks("!", "<D-v>", "<C-R>+", opts)
+	vks("t", "<D-v>", "<C-R>+", opts)
+	vks("v", "<D-v>", "<C-R>+", opts)
 end
