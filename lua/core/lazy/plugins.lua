@@ -167,10 +167,13 @@ lazy.setup({
 	{
 		"crusj/structrue-go.nvim",
 		branch = "main",
-		config = function()
-			require("plugins.lang.structrue-go-config")
-		end,
 		event = "BufReadPre",
+        opts = function()
+			return require("plugins.lang.structrue-go-config")
+		end,
+        config = function(_, opts)
+            require("structrue-go").setup(opts)
+        end,
 	},
 	{
 		"ray-x/go.nvim",
