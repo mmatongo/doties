@@ -35,4 +35,4 @@ nvim --headless "+Lazy! sync" +qa
 
 ## Inspiration
 - [Folke](https://github.com/folke) for the [Lazy](https://github.com/folke/lazy.nvim) plugin manager.
-- [siduck76](https://github.com/siduck76) for [NvChad](https://github.com/NvChad/NvChad) which I used as a reference for some of the configurations.
+- [siduck](https://github.com/siduck) for [NvChad](https://github.com/NvChad/NvChad) which I used as a reference for some of the configurations.
