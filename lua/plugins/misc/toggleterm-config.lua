@@ -1,13 +1,8 @@
 -- toogleterm config
 
-local present, toggleterm = pcall(require, "toggleterm")
 
-if not present then
-	return
-end
-
-toggleterm.setup({
-	size = 20,
+options = {
+	size = 25,
 	open_mapping = [[<c-\>]],
 	hide_numbers = true,
 	shade_filetypes = {},
@@ -18,11 +13,14 @@ toggleterm.setup({
 	persist_size = true,
 	direction = "float",
 	close_on_exit = true,
+	auto_scroll = true,
 	shell = vim.o.shell,
 	float_opts = {
 		border = "curved",
-		width = 80,
-		height = 20,
-		winblend = 3,
+		-- width = 100,
+		-- height = 25,
+		winblend = 6,
 	},
-})
+}
+
+return options
