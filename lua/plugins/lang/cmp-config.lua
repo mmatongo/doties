@@ -7,16 +7,75 @@ if not present then
 	return
 end
 
-cmp.setup({
+cmp_ui = {
+	icons = true,
+	lspkind_text = true,
+	style = "default",
+}
+
+local field_arrangement = {
+	atom = { "kind", "abbr", "menu" },
+	atom_colored = { "kind", "abbr", "menu" },
+}
+
+local formatting_style = {
+	-- default fields order i.e completion word + item.kind + item.kind icons
+	fields = field_arrangement[cmp_ui.style] or { "abbr", "kind", "menu" },
+
+	format = function(_, item)
+		local icons = lspkind.presets.default
+		local icon = (cmp_ui.icons and icons[item.kind]) or ""
+
+		if cmp.style == "atom" or cmp_ui.style == "atom_colored" then
+			icon = " " .. icon .. " "
+			item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
+			item.kind = icon
+		else
+			icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
+			item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
+		end
+
+		return item
+	end,
+}
+
+local function border(hl_name)
+	return {
+		{ "╭", hl_name },
+		{ "─", hl_name },
+		{ "╮", hl_name },
+		{ "│", hl_name },
+		{ "╯", hl_name },
+		{ "─", hl_name },
+		{ "╰", hl_name },
+		{ "│", hl_name },
+	}
+end
+
+local options = {
+	completion = {
+		completeopt = "menu,menuone",
+	},
+
+	window = {
+		completion = {
+			side_padding = (cmp_ui.style ~= "atom" and cmp_ui.style ~= "atom_colored") and 1 or 0,
+			winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+			scrollbar = false,
+		},
+		documentation = {
+			border = border("CmpDocBorder"),
+			winhighlight = "Normal:CmpDoc",
+		},
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
-	},
+
+	formatting = formatting_style,
+
 	mapping = {
 		["<Tab>"] = function(fallback)
 			if cmp.visible() then
@@ -33,54 +92,17 @@ cmp.setup({
 			end
 		end,
 	},
-	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' }, -- For luasnip users.
-	}, {
-		{ name = 'buffer' },
-	}),
-	formatting = {
-	    format = lspkind.cmp_format({
-			mode = 'symbol',
-			maxwidth = 50,
-		})
-		-- format = function(entry, vim_item)
-		-- 	vim_item.kind = lspkind.presets.default[vim_item.kind]
-
-		-- 	vim_item.menu = ({
-		-- 		nvim_lsp = "[LSP]",
-		-- 		luasnip = "[LuaSnip]",
-		-- 		buffer = "[Buffer]",
-		-- 	})[entry.source.name]
-
-		-- 	return vim_item
-		-- end
-	}
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype("gitcommit", {
-	sources = cmp.config.sources({
-		{ name = "git" },
-	}, {
-		{ name = "buffer" },
-	}),
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ "/", "?" }, {
-	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
+		{ name = "nvim_lua" },
+		{ name = "path" },
 	},
-})
+}
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
--- cmp.setup.cmdline(":", {
--- 	mapping = cmp.mapping.preset.cmdline(),
--- 	sources = cmp.config.sources({
--- 		{ name = "path" },
--- 	}, {
--- 		{ name = "cmdline" },
--- 	}),
--- })
+if cmp_ui.style ~= "atom" and cmp_ui.style ~= "atom_colored" then
+	options.window.completion.border = border("CmpBorder")
+end
+
+return options
