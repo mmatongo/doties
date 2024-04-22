@@ -1,6 +1,4 @@
-local present, other_nvim = pcall(require, "other-nvim")
-
-other_nvim.setup({
+options = {
 	mappings = {
 		-- builtin mappings
 		"livewire",
@@ -21,4 +19,6 @@ other_nvim.setup({
 		width = 0.7,
 		minHeight = 2,
 	},
-})
+}
+
+return options
