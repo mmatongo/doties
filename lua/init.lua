@@ -5,7 +5,7 @@ local core_modules = {
 	"core.mappings",
 	"core.status",
 	"core.settings",
-	"core.packer.plugins",
+	"core.lazy.plugins",
 }
 
 -- Load core configurations
@@ -28,7 +28,6 @@ local function load_plugins(directory)
 		for _, file in ipairs(files) do
 			local fullpath = dir .. "/" .. file
 			if vim.fn.isdirectory(fullpath) == 1 then
-				-- It's a directory, scan it recursively
 				scan_directory(fullpath)
 			elseif file:match("%.lua$") then -- Only include .lua files
 				local ok, err = pcall(dofile, fullpath)
