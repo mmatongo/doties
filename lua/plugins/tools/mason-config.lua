@@ -1,8 +1,8 @@
 -- mason config
 
-local install_root_dir = vim.fn.stdpath("data") .. "/mason"
+install_root_dir = vim.fn.stdpath("data") .. "/mason"
 
-local mason_settings = {
+options = {
 	install_root_dir = install_root_dir,
 	PATH = "prepend",
 	log_level = vim.log.levels.INFO,
@@ -47,11 +47,4 @@ local mason_settings = {
 	},
 }
 
--- Call the setup function with the settings
-local present, mason = pcall(require, "mason")
-
-if not present then
-	return
-end
-
-mason.setup(mason_settings)
+return options
