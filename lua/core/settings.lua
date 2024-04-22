@@ -1,19 +1,21 @@
 -- opts
 local opt = vim.opt
+local o = vim.o
 local g = vim.g
 local vc = vim.cmd
 local vp = vim.api.nvim_exec
 
 -- general
 opt.termguicolors = true
-opt.swapfile = false
+opt.swapfile = true
 opt.undofile = true
 opt.cmdheight = 1
 opt.showmode = false
 vc("set noshowcmd")
 
 opt.background = "dark"
-vc("colorscheme plain")
+-- colorscheme is applied in core.lazy.plugins
+-- vc("colorscheme plain")
 
 -- settings IndentLine
 g.indentLine_setColors = 0
@@ -67,6 +69,13 @@ opt.complete = ".,w,b,i,u,t,"
 opt.background = [[dark]]
 opt.laststatus = 0
 opt.autochdir = true
+opt.wildmode = "longest:full,full"
+
+-- more opts
+o.wildmenu = true
+o.wildignorecase = true
+o.wrap = true
+o.undolevels = 1000
 
 -- disable inbuilt vim plugins
 local built_ins = {
@@ -102,24 +111,17 @@ opt.ttimeoutlen = 10
 
 -- neovide
 if g.neovide then
-	g.neovide_padding_top = 15
+	g.neovide_padding_top = 25
 	g.neovide_cursor_vfx_mode = ""
 	g.neovide_remember_window_size = true
+	g.neovide_padding_top = 10
+	vim.g.neovide_show_border = true
 
 	-- disable neovide for certain filetypes
 	vc(
 		[[
-		au FileType NvimTree,pack lua vim.g.neovide_remember_window_size = false
+		au FileType NvimTree,pack lua vim.g.neovide_remember_window_size = true
 		]],
 		false
 	)
 end
-
--- nvim notify
-notify, _ = pcall(require, "notify")
-if notify then
-	vim.notify = require("notify")
-end
-
--- misc
-g.barbar_auto_setup = false
