@@ -21,9 +21,6 @@ opt.background = "dark"
 g.indentLine_setColors = 0
 g.indentLine_char = "┆"
 
-vc([[ au BufWritePost ~/.config/nvim/*.{vim,lua} so $MYVIMRC ]])
-vc([[ au BufWritePost ~/.config/nvim/lua/*.{vim,lua} so $MYVIMRC ]])
-
 -- status, tab, number, sign line
 opt.ruler = false
 opt.laststatus = 2
@@ -60,19 +57,16 @@ opt.smartcase = true
 opt.sidescroll = 40
 opt.incsearch = true
 opt.hlsearch = true
-opt.undofile = true
 opt.backspace = "indent,eol,start"
 opt.hidden = true
 opt.wildmenu = true
 opt.foldmethod = "manual"
 opt.complete = ".,w,b,i,u,t,"
-opt.background = [[dark]]
 opt.laststatus = 0
 opt.autochdir = true
 opt.wildmode = "longest:full,full"
 
 -- more opts
-o.wildmenu = true
 o.wildignorecase = true
 o.wrap = true
 o.undolevels = 1000
