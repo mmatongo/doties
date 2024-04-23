@@ -9,8 +9,8 @@ vfs("DiagnosticSignError", { text = "│", texthl = "ALEErrorSign" })
 vfs("DiagnosticSignWarn", { text = "│", texthl = "ALEWarningSign" })
 
 vc([[
-    highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#f47174 guibg=#101010
-    highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ff9800 guibg=#101010
+    highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#f47174 guibg=NONE
+    highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ff9800 guibg=NONE
 ]])
 
 -- ALE General Settings
