@@ -42,7 +42,6 @@ options = {
 		enabled = true,
 		backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
 		trim_prompt = true,
-		telescope = require('telescope.themes').get_ivy({...}),
 		telescope = nil,
 		fzf = {
 			window = {
