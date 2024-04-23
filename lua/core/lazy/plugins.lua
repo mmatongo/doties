@@ -36,8 +36,9 @@ lazy.setup({
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		ops = function()
+		lazy = true,
+		event = { "BufReadPost", "BufWritePost" },
+		opts = function()
 			return require("plugins.editor.gitsigns-config")
 		end,
 		config = function(_, opts)
@@ -53,7 +54,8 @@ lazy.setup({
 			require("toggleterm").setup(opts)
 		end,
 		cmd = "ToggleTerm",
-		event = "BufReadPre",
+		-- event = "BufReadPre",
+		lazy = true,
 	},
 	{
 		"dense-analysis/ale",
@@ -76,7 +78,7 @@ lazy.setup({
 		config = function()
 			require("better_escape").setup()
 		end,
-		event = "VeryLazy",
+		event = "InsertCharPre",
 	},
 	{
 		"rgroli/other.nvim",
@@ -112,7 +114,8 @@ lazy.setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "BufReadPre",
+		lazy = true,
+		event = { "BufReadPost", "BufAdd", "BufNewFile" },
 		opts = function()
 			return require("plugins.ui.lualine-config")
 		end,
@@ -121,12 +124,13 @@ lazy.setup({
 		end,
 	},
 	{
-        "rcarriga/nvim-notify",
-        event = "UiEnter",
-        config = function()
-            vim.notify = require("notify")
-        end,
-     },
+		"rcarriga/nvim-notify",
+		lazy = true,
+		event = "VeryLazy",
+		config = function()
+			vim.notify = require("notify")
+		end,
+	},
 	{
 		"catppuccin/nvim",
 		event = "UiEnter",
@@ -142,7 +146,8 @@ lazy.setup({
 		config = function()
 			require("plugins.ui.alpha-config")
 		end,
-		event = "UiEnter",
+		lazy = true,
+		event = "BufWinEnter",
 	},
 	{
 		"romgrk/barbar.nvim",
@@ -168,12 +173,12 @@ lazy.setup({
 		"crusj/structrue-go.nvim",
 		branch = "main",
 		event = "BufReadPre",
-        opts = function()
+		opts = function()
 			return require("plugins.lang.structrue-go-config")
 		end,
-        config = function(_, opts)
-            require("structrue-go").setup(opts)
-        end,
+		config = function(_, opts)
+			require("structrue-go").setup(opts)
+		end,
 	},
 	{
 		"ray-x/go.nvim",
@@ -181,6 +186,7 @@ lazy.setup({
 		config = function()
 			require("go").setup()
 		end,
+		lazy = true,
 		ft = { "go", "gomod" },
 		build = ':lua require("go.install").update_all_sync()',
 	},
@@ -191,6 +197,7 @@ lazy.setup({
 			"nvim-lua/popup.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 		},
+		lazy = true,
 		event = "VeryLazy",
 		opts = function()
 			return require("plugins.tools.telescope-config")
@@ -203,6 +210,7 @@ lazy.setup({
 
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = true,
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
 		build = ":TSUpdate",
@@ -216,7 +224,8 @@ lazy.setup({
 	},
 	{
 		"numToStr/Comment.nvim",
-		event = "BufRead",
+		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			vim.defer_fn(function()
 				require("Comment").setup()
@@ -225,13 +234,18 @@ lazy.setup({
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = "BufReadPre",
+		lazy = true,
 		dependencies = {
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = {
 					"rafamadriz/friendly-snippets",
-					"saadparwaiz1/cmp_luasnip",
+					{
+						"saadparwaiz1/cmp_luasnip",
+						lazy = true,
+						event = "VeryLazy",
+					},
 					opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 					config = function(_, opts)
 						require("luasnip").config.set_config(opts)
@@ -245,7 +259,7 @@ lazy.setup({
 					fast_wrap = {},
 					disable_filetype = { "TelescopePrompt", "vim" },
 				},
-                event = "InsertEnter",
+				event = "BufReadPre",
 				config = function(_, opts)
 					require("nvim-autopairs").setup(opts)
 
@@ -268,19 +282,120 @@ lazy.setup({
 	},
 	{
 		"VonHeikemen/searchbox.nvim",
+		lazy = true,
 		event = "BufReadPre",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
 	},
 	{
-        "stevearc/dressing.nvim",
-        event = "BufReadPre",
-        opts = function()
-            return require("plugins.ui.dressing-config")
-        end,
-        config = function(_, opts)
-            require("dressing").setup(opts)
-        end,
-     },
+		"stevearc/dressing.nvim",
+		event = "User BaseDefered",
+		opts = function()
+			return require("plugins.ui.dressing-config")
+		end,
+		config = function(_, opts)
+			require("dressing").setup(opts)
+		end,
+	},
+	{
+		"Zeioth/project.nvim",
+		event = "User BaseDefered",
+		cmd = "ProjectRoot",
+		opts = {
+			patterns = {
+				".git",
+				"_darcs",
+				".hg",
+				".bzr",
+				".svn",
+				"Makefile",
+				"package.json",
+				".solution",
+				".solution.toml",
+			},
+			exclude_dirs = {
+				"~/",
+			},
+			silent_chdir = true,
+			manual_mode = false,
+
+			exclude_filetype_chdir = { "", "alpha" },
+
+			exclude_buftype_chdir = { "nofile", "terminal" },
+		},
+		config = function(_, opts)
+			require("project_nvim").setup(opts)
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "User BaseFile",
+		opts = function()
+			local is_enabled = vim.g.lsp_signature_enabled
+			local round_borders = {}
+			if vim.g.lsp_round_borders_enabled then
+				round_borders = { border = "rounded" }
+			end
+			return {
+				-- Window mode
+				floating_window = is_enabled, -- Display it as floating window.
+				hi_parameter = "IncSearch", -- Color to highlight floating window.
+				handler_opts = round_borders, -- Window style
+
+				-- Hint mode
+				hint_enable = false, -- Display it as hint.
+				hint_prefix = "",
+
+				-- Additionally, you can use <space>ui to toggle inlay hints.
+				toggle_key_flip_floatwin_setting = is_enabled,
+			}
+		end,
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
+		end,
+	},
+	{
+		"echasnovski/mini.indentscope",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			draw = {
+				delay = 0,
+				animation = function()
+					return 0
+				end,
+			},
+			options = { border = "top", try_as_border = true },
+			symbol = "▏",
+		},
+		config = function(_, opts)
+			require("mini.indentscope").setup(opts)
+
+			-- Disable for certain filetypes
+			vim.api.nvim_create_autocmd({ "FileType" }, {
+				desc = "Disable indentscope for certain filetypes",
+				callback = function()
+					local ignored_filetypes = {
+						"aerial",
+						"dashboard",
+						"help",
+						"lazy",
+						"leetcode.nvim",
+						"mason",
+						"neo-tree",
+						"NvimTree",
+						"neogitstatus",
+						"notify",
+						"startify",
+						"toggleterm",
+						"Trouble",
+						"calltree",
+					}
+					if vim.tbl_contains(ignored_filetypes, vim.bo.filetype) then
+						vim.b.miniindentscope_disable = true
+					end
+				end,
+			})
+		end,
+	},
 })
