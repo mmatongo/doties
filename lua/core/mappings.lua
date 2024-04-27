@@ -36,14 +36,9 @@ vks("n", "<C-j>", ":OtherVSplit<CR>", opts)
 -- mason
 vks("n", "<C-[>", ":Mason<CR>", opts)
 
--- lspsaga
-vks("n", "gh", ":Lspsaga lsp_finder<CR>", opts)
-vks("n", "gg", ":Lspsaga code_action<CR>", opts)
-vks("n", "gj", ":Lspsaga hover_doc<CR>", opts)
-vks("n", "gk", ":Lspsaga signature_help<CR>", opts)
-vks("n", "gl", ":Lspsaga show_line_diagnostics<CR>", opts)
-vks("n", "gq", ":Lspsaga rename<CR>", opts)
-vks("n", "gR", ":Lspsaga preview_definition<CR>", opts)
+-- renamer
+vks("n", "<C-]>", ":silent :lua require('renamer').rename()<CR>", opts)
+vks("n", "<C-\\>", ":lua vim.lsp.buf.rename()<CR>", opts)
 
 -- clear enter mapping
 vks("n", "<CR>", "<NOP>", opts)

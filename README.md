@@ -23,7 +23,7 @@ nvim --headless "+Lazy! sync" +qa
 ## Screenshots
 1. Start screen
 
-![Start screen](https://raw.githubusercontent.com/mmatongo/img/master/Screenshot%202024-04-22%20at%2019.56.46.png?raw=true)
+![Start screen](https://raw.githubusercontent.com/mmatongo/img/master/Screenshot%202024-04-23%20at%2022.33.24.png?raw=true)
 
 2. Mason
 
