@@ -4,6 +4,7 @@ local o = vim.o
 local g = vim.g
 local vc = vim.cmd
 local vp = vim.api.nvim_exec
+local vfs = vim.fn.sign_define
 
 -- general
 opt.termguicolors = true
@@ -14,8 +15,6 @@ opt.showmode = false
 vc("set noshowcmd")
 
 opt.background = "dark"
--- colorscheme is applied in core.lazy.plugins
--- vc("colorscheme plain")
 
 -- settings IndentLine
 g.indentLine_setColors = 0
@@ -23,7 +22,7 @@ g.indentLine_char = "┆"
 
 -- status, tab, number, sign line
 opt.ruler = false
-opt.laststatus = 2
+opt.laststatus = 0
 opt.showtabline = 1
 opt.number = true
 opt.signcolumn = "yes"
@@ -47,7 +46,6 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 2
 opt.inccommand = "nosplit"
-opt.laststatus = 0
 opt.cmdheight = 2
 opt.ma = true
 
@@ -62,7 +60,6 @@ opt.hidden = true
 opt.wildmenu = true
 opt.foldmethod = "manual"
 opt.complete = ".,w,b,i,u,t,"
-opt.laststatus = 0
 opt.autochdir = true
 opt.wildmode = "longest:full,full"
 
@@ -119,3 +116,49 @@ if g.neovide then
 		false
 	)
 end
+
+-- ale
+
+vfs("DiagnosticSignError", { text = "│", texthl = "ALEErrorSign" })
+vfs("DiagnosticSignWarn", { text = "│", texthl = "ALEWarningSign" })
+
+vc([[
+    highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#f47174 guibg=NONE
+    highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ff9800 guibg=NONE
+]])
+
+g.ale_lint_on_text_changed = "never" -- Adjust according to preference
+g.ale_lint_on_insert_leave = 1
+g.ale_lint_on_save = 1
+g.ale_fix_on_save = 1
+
+g.ale_linters = {
+	ruby = { "rubocop", "reek", "sorbet" },
+	erb = { "erb_lint" },
+	javascript = { "eslint" },
+	html = { "tidy" },
+	python = { "flake8", "mypy", "pylint" },
+	lua = { "stylua" },
+	go = { "gofmt", "goimports", "golangci_lint", "gopls" },
+}
+
+g.ale_fixers = {
+	ruby = { "rubocop" },
+	javascript = { "prettier" },
+	html = { "tidy" },
+	lua = { "stylua" },
+	go = { "gofmt", "goimports", "gopls" },
+}
+
+g.ale_fixers_enabled = 1
+
+g.ale_set_highlights = 1
+g.ale_set_loclist = 1
+g.ale_set_quickfix = 0
+g.ale_set_signs = 1
+g.ale_open_list = 0
+g.ale_virtualtext_cursor = 0
+
+vc([[
+    autocmd FileType alpha setlocal nofoldenable
+]])
