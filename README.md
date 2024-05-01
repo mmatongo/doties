@@ -4,7 +4,7 @@ This is my neovim configuration. I use it for ruby and go development. It is a w
 
 This config uses [Lazy](https://github.com/folke/lazy.nvim) as the plugin manager. A lot of the plugins are loaded lazily so that they don't slow down the startup time of neovim. At the time of writing this, the startup time is recorded below.
 
-![Startup Time](https://raw.githubusercontent.com/mmatongo/img/master/Startup%202024-04-22.png?raw=true)
+![Startup Time](https://raw.githubusercontent.com/mmatongo/img/master/Screenshot%202024-04-23%20at%2022.33.24.png?raw=true)
 
 ## Installation
 
