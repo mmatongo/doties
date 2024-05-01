@@ -12,6 +12,7 @@ opt.swapfile = true
 opt.undofile = true
 opt.cmdheight = 1
 opt.showmode = false
+opt.winblend = 3
 vc("set noshowcmd")
 
 opt.background = "dark"
@@ -27,12 +28,6 @@ opt.showtabline = 1
 opt.number = true
 opt.signcolumn = "yes"
 
--- timeout stuff
-opt.updatetime = 300
-opt.timeout = true
-opt.timeoutlen = 500
-opt.ttimeoutlen = 10
-
 -- remove intro
 opt.shortmess:append("sI")
 
@@ -46,7 +41,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 2
 opt.inccommand = "nosplit"
-opt.cmdheight = 2
+opt.cmdheight = 1
 opt.ma = true
 
 -- more opts
@@ -143,7 +138,7 @@ g.ale_linters = {
 }
 
 g.ale_fixers = {
-	ruby = { "rubocop" },
+	-- ruby = { "rubocop" },
 	javascript = { "prettier" },
 	html = { "tidy" },
 	lua = { "stylua" },

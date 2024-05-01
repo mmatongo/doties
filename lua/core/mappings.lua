@@ -9,7 +9,7 @@ g.mapleader = ","
 -- keymaps
 opts = { noremap = true, silent = true }
 
-vks("n", "<C-s>", ":write<CR>", opts)
+vks("n", "<C-s>", ":silent :write<CR>", opts)
 vks("n", "<C-q>", ":q!<CR>", opts)
 vks("n", "<C-x>", ":quit<CR>", opts)
 vks("n", "<C-e>", ":lua minimal()<CR>", opts)
@@ -50,7 +50,6 @@ vks("n", "<C-l>", ":ToggleTerm<CR>", opts)
 -- searchbox
 vks("n", "<leader>s", ":SearchBoxMatchAll<CR>", opts)
 vks("n", "<leader>S", ":SearchBoxReplace<CR>", opts)
-
 
 function minimal()
 	if active then
