@@ -24,5 +24,5 @@ return {
 		}
 	end,
 	cmd = "ToggleTerm",
-	-- lazy = true,
+	lazy = true,
 }
