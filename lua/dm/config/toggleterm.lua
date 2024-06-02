@@ -25,4 +25,5 @@ return {
 	end,
 	cmd = "ToggleTerm",
 	lazy = true,
+    event = "BufReadPre",
 }

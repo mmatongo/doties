@@ -48,9 +48,6 @@ vks("n", "<C-'>", ":lua vim.lsp.buf.rename()<CR>", opts)
 vks("n", "<CR>", "<NOP>", opts)
 vks("n", "<ESC>", "<NOP", opts)
 
--- toggleterm
-vks("n", "<C-l>", ":ToggleTerm<CR>", opts)
-
 -- searchbox
 vks("n", "<leader>s", ":SearchBoxMatchAll<CR>", opts)
 vks("n", "<leader>S", ":SearchBoxReplace<CR>", opts)
