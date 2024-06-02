@@ -32,4 +32,25 @@ lazy.setup({
 		enabled = true,
 		notify = true,
 	},
+	performance = {
+		cache = {
+			enabled = true,
+			disable_event = "UIEnter",
+		},
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+				"man",
+				"osc52",
+				"spellfile",
+			},
+		},
+	},
 })

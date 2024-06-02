@@ -1,5 +1,5 @@
 return {
 	"dense-analysis/ale",
-	-- cmd = { "ALEFix", "ALEFixSuggest" },
-	event = "LspAttach",
+	cmd = { "ALEFix", "ALEFixSuggest" },
+	event = "BufReadPre",
 }

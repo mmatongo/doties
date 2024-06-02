@@ -36,9 +36,13 @@ vks("n", "<C-j>", ":OtherVSplit<CR>", opts)
 -- mason
 vks("n", "<C-[>", ":Mason<CR>", opts)
 
+-- copilot enable and disable
+vks("n", "<leader>p", ":Copilot enable<CR>", opts)
+vks("n", "<leader>P", ":Copilot disable<CR>", opts)
+
 -- renamer
 vks("n", "<C-]>", ":silent :lua require('renamer').rename()<CR>", opts)
-vks("n", "<C-\\>", ":lua vim.lsp.buf.rename()<CR>", opts)
+vks("n", "<C-'>", ":lua vim.lsp.buf.rename()<CR>", opts)
 
 -- clear enter mapping
 vks("n", "<CR>", "<NOP>", opts)

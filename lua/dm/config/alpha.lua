@@ -2,6 +2,7 @@ return {
 	"goolord/alpha-nvim",
 	lazy = true,
 	event = "BufWinEnter",
+	cmd = "Alpha",
 	opts = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")

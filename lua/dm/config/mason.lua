@@ -1,7 +1,7 @@
 return {
 	"williamboman/mason.nvim",
 	cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-	event = { "InsertEnter" },
+	-- event = { "InsertEnter" },
     enabled = function()
         return vim.fn.executable("Mason") == 0
     end,
