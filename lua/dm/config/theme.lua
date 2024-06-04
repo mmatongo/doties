@@ -6,6 +6,6 @@ return {
 	priority = 1000,
 	opts = {},
 	config = function()
-		vc("colorscheme rose-pine-moon")
+		vc("colorscheme rose-pine")
 	end,
 }
