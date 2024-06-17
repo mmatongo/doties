@@ -1,11 +1,11 @@
 local vc = vim.cmd
 return {
-	"rose-pine/neovim",
+	"catppuccin/nvim",
 	-- event = "VeryLazy",
 	-- lazy = true,
 	priority = 1000,
 	opts = {},
 	config = function()
-		vc("colorscheme rose-pine")
+		vc("colorscheme catppuccin-mocha")
 	end,
 }
