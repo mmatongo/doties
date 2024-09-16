@@ -4,6 +4,7 @@
 local core_modules = {
 	"core.mappings",
 	"core.settings",
+	"core.options",
 	"core.lazy.plugins",
 }
 
