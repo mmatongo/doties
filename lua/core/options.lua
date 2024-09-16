@@ -37,7 +37,7 @@ local options = {
     ignorecase     = true,                                                             -- Ignore case in search patterns.
     inccommand     = 'split',                                                          -- Show the effect of a command incrementally in a split.
     incsearch      = true,                                                             -- Show search matches as you type.
-    laststatus     = 3,                                                                -- Always display the status line (0: never, 1: only if there are splits, 2: always, 3: global status line).
+    laststatus     = 1,                                                                -- Always display the status line (0: never, 1: only if there are splits, 2: always, 3: global status line).
     linebreak      = true,                                                             -- Wrap lines at convenient points.
     list           = false,                                                            -- Show whitespace characters like tabs and trailing spaces.
     listchars      = { tab = '▸ ', trail = '·', nbsp = '␣', eol = '↴', extends = '→', precedes = '←' },
