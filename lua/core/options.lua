@@ -176,7 +176,7 @@ for k, v in pairs(options) do
 end
 
 for _, plugin in pairs(built_ins) do
-	g["loaded_" .. plugin] = 1
+	vim.g["loaded_" .. plugin] = 1
 end
 
 for k, v in pairs(ale_options) do
