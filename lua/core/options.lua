@@ -124,16 +124,16 @@ local ale_options = {
         go = { "gofmt", "goimports", "golangci_lint", "gopls" },
     },
     ale_fixers_enabled = 1,
-    ale_set_highlights = 1
-    ale_set_loclist = 1
-    ale_set_quickfix = 0
-    ale_set_signs = 1
-    ale_open_list = 0
-    ale_virtualtext_cursor = 0
-    ale_lint_on_text_changed = "never" -- Adjust according to preference
-    ale_lint_on_insert_leave = 1
-    ale_lint_on_save = 1
-    ale_fix_on_save = 1
+    ale_set_highlights = 1,
+    ale_set_loclist = 1,
+    ale_set_quickfix = 0,
+    ale_set_signs = 1,
+    ale_open_list = 0,
+    ale_virtualtext_cursor = 0,
+    ale_lint_on_text_changed = "never", -- Adjust according to preference
+    ale_lint_on_insert_leave = 1,
+    ale_lint_on_save = 1,
+    ale_fix_on_save = 1,
 }
 
 --built-in-plugins
