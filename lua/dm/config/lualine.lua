@@ -23,13 +23,15 @@ return {
 					"packer",
 					"startify",
 					"Lazy",
+					"lazygit",
 					"toggleterm",
 					"TelescopePrompt",
 					"structure-go",
 					"nvim-tree",
 					"Outline",
 				},
-				-- always_divide_middle = true,
+				always_divide_middle = true,
+				component_separators = {},
 				globalstatus = true,
 				refresh = {
 					statusline = 1000,
@@ -64,18 +66,18 @@ return {
 						},
 					},
 				},
-				lualine_x = {
-					-- "encoding",
-					-- "fileformat",
-					{
-						"filetype",
-						icons_enabled = true, -- Displays filetype icon.
-						colors_enabled = true, -- Displays filetype color.
-					},
-				},
+				-- lualine_x = {
+				-- 	-- "encoding",
+				-- 	-- "fileformat",
+				-- 	{
+				-- 		"filetype",
+				-- 		icons_enabled = true, -- Displays filetype icon.
+				-- 		colors_enabled = true, -- Displays filetype color.
+				-- 	},
+				-- },
 				lualine_y = {
 					-- "%L",
-					"progress",
+					-- "progress",
 					{
 						"diagnostics",
 						-- Table of diagnostic sources, available sources are:
@@ -86,6 +88,7 @@ return {
 
 						-- 	-- Displays diagnostics for the defined severity types
 						sections = { "error", "warn", "info", "hint" },
+						separator = { left = "", right = "" },
 
 						diagnostics_color = {
 							-- Same values as the general color option can be used here.
@@ -100,7 +103,10 @@ return {
 						always_visible = false, -- Show diagnostics even if there are none.
 					},
 				},
-				lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
+				-- lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
+				lualine_x = {},
+				-- lualine_y = {},
+				lualine_z = {},
 			},
 			-- inactive_sections = {
 			-- 	lualine_a = {},
@@ -130,9 +136,9 @@ return {
 			-- 	lualine_y = {},
 			-- 	lualine_z = {},
 			-- },
-			tabline = {},
-			winbar = {},
-			inactive_winbar = {},
+			-- tabline = {},
+			-- winbar = {},
+			-- inactive_winbar = {},
 			extensions = {},
 		}
 	end,

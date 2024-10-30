@@ -1,11 +1,11 @@
 local vc = vim.cmd
 return {
-	"catppuccin/nvim",
+	"olivercederborg/poimandres.nvim",
 	-- event = "VeryLazy",
 	-- lazy = true,
 	priority = 1000,
 	opts = {},
 	config = function()
-		vc("colorscheme catppuccin-mocha")
+		vc("colorscheme poimandres")
 	end,
 }
