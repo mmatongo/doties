@@ -15,6 +15,7 @@ return {
 		return {
 			filters = {
 				dotfiles = false,
+                custom = { "^\\.git$" },
 			},
 			update_cwd = true,
 			disable_netrw = true,
@@ -28,9 +29,9 @@ return {
 				ignore_list = { "help" },
 			},
 			view = {
-				adaptive_size = false,
+				adaptive_size = true,
 				side = "left",
-				width = 40,
+				width = 45,
 				preserve_window_proportions = true,
 			},
 			git = {
@@ -101,3 +102,4 @@ return {
 		})
 	end,
 }
+
